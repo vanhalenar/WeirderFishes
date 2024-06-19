@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci2ylf3jskdxl"]
+
+[ext_resource type="PackedScene" uid="uid://cytjmcme4xp84" path="res://scenes/fish.tscn" id="1_uussu"]
+[ext_resource type="Texture2D" uid="uid://c8pndostyw45v" path="res://assets/fishes/roger.png" id="2_5r80l"]
+[ext_resource type="Shader" path="res://shaders/squash.gdshader" id="2_la7s0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ln7u0"]
+radius = 17.0
+height = 118.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fokqi"]
+shader = ExtResource("2_la7s0")
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+
+[node name="Roger" instance=ExtResource("1_uussu")]
+idle_anim = 2
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_ln7u0")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_fokqi")
+texture = ExtResource("2_5r80l")

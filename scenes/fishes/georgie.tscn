@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq4jxrubb120h"]
+
+[ext_resource type="PackedScene" uid="uid://cytjmcme4xp84" path="res://scenes/fish.tscn" id="1_xjtyt"]
+[ext_resource type="Shader" path="res://shaders/squash.gdshader" id="2_07fwj"]
+[ext_resource type="Texture2D" uid="uid://cckk7u8o22prm" path="res://assets/fishes/georgie.png" id="2_ggcwf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwnyb"]
+radius = 21.0
+height = 112.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0ax3"]
+shader = ExtResource("2_07fwj")
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+
+[node name="Georgie" instance=ExtResource("1_xjtyt")]
+idle_anim = 1
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_vwnyb")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_s0ax3")
+texture = ExtResource("2_ggcwf")

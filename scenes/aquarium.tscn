@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://5nbumx8ayp1t"]
+
+[ext_resource type="Texture2D" uid="uid://7pkxwbpo50kb" path="res://assets/background.png" id="1_2cemv"]
+[ext_resource type="PackedScene" uid="uid://day5prl16b3i1" path="res://scenes/fishes/jeremy.tscn" id="4_1atpd"]
+[ext_resource type="PackedScene" uid="uid://ci2ylf3jskdxl" path="res://scenes/fishes/roger.tscn" id="5_8hnas"]
+[ext_resource type="PackedScene" uid="uid://sr5ksb7aqcmn" path="res://scenes/fishes/oddie.tscn" id="5_fef4g"]
+[ext_resource type="PackedScene" uid="uid://dq4jxrubb120h" path="res://scenes/fishes/georgie.tscn" id="6_pbda8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtnij"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ks6vw"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k327j"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qyhq7"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f771q"]
+size = Vector2(150, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg2ss"]
+size = Vector2(150, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apdu8"]
+size = Vector2(1280, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_galif"]
+size = Vector2(1280, 100)
+
+[node name="Aquarium" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_2cemv")
+centered = false
+
+[node name="Fish" type="Node2D" parent="."]
+
+[node name="Jeremy" parent="Fish" instance=ExtResource("4_1atpd")]
+position = Vector2(253, 392)
+
+[node name="Roger" parent="Fish" instance=ExtResource("5_8hnas")]
+position = Vector2(983, 273)
+
+[node name="Georgie" parent="Fish" instance=ExtResource("6_pbda8")]
+position = Vector2(615, 336)
+
+[node name="Oddie" parent="Fish" instance=ExtResource("5_fef4g")]
+position = Vector2(831, 492)
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(640, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_vtnij")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(640, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_ks6vw")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_k327j")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1280, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_qyhq7")
+
+[node name="NavBoundaries" type="Node2D" parent="."]
+
+[node name="Left" type="Area2D" parent="NavBoundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavBoundaries/Left"]
+position = Vector2(75, 360)
+shape = SubResource("RectangleShape2D_f771q")
+
+[node name="Right" type="Area2D" parent="NavBoundaries"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavBoundaries/Right"]
+position = Vector2(1205, 360)
+shape = SubResource("RectangleShape2D_mg2ss")
+
+[node name="Top" type="Area2D" parent="NavBoundaries"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavBoundaries/Top"]
+position = Vector2(640, 50)
+shape = SubResource("RectangleShape2D_apdu8")
+
+[node name="Bottom" type="Area2D" parent="NavBoundaries"]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavBoundaries/Bottom"]
+position = Vector2(640, 670)
+shape = SubResource("RectangleShape2D_galif")
+
+[editable path="Fish/Jeremy"]

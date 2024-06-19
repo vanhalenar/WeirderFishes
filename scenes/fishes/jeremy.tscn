@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://day5prl16b3i1"]
+
+[ext_resource type="PackedScene" uid="uid://cytjmcme4xp84" path="res://scenes/fish.tscn" id="1_cejoe"]
+[ext_resource type="Texture2D" uid="uid://bdcq3ytbwhvg5" path="res://assets/fishes/Jeremy.png" id="2_888yb"]
+[ext_resource type="Shader" path="res://shaders/squash.gdshader" id="2_qldgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_su6p8"]
+radius = 19.0
+height = 124.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clv7i"]
+shader = ExtResource("2_qldgy")
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+
+[node name="Jeremy" instance=ExtResource("1_cejoe")]
+idle_anim = 1
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_su6p8")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_clv7i")
+texture = ExtResource("2_888yb")

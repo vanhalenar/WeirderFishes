@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://sr5ksb7aqcmn"]
+
+[ext_resource type="PackedScene" uid="uid://cytjmcme4xp84" path="res://scenes/fish.tscn" id="1_4oi8g"]
+[ext_resource type="Texture2D" uid="uid://ckgdmpwgmchgh" path="res://assets/fishes/oddie.png" id="2_lmutb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwuoy"]
+radius = 26.0
+height = 110.0
+
+[node name="Oddie" instance=ExtResource("1_4oi8g")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_wwuoy")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_lmutb")
