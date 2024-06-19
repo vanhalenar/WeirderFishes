@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://5nbumx8ayp1t"]
+[gd_scene load_steps=15 format=3 uid="uid://5nbumx8ayp1t"]
 
 [ext_resource type="Texture2D" uid="uid://7pkxwbpo50kb" path="res://assets/background.png" id="1_2cemv"]
 [ext_resource type="PackedScene" uid="uid://day5prl16b3i1" path="res://scenes/fishes/jeremy.tscn" id="4_1atpd"]
 [ext_resource type="PackedScene" uid="uid://ci2ylf3jskdxl" path="res://scenes/fishes/roger.tscn" id="5_8hnas"]
 [ext_resource type="PackedScene" uid="uid://sr5ksb7aqcmn" path="res://scenes/fishes/oddie.tscn" id="5_fef4g"]
 [ext_resource type="PackedScene" uid="uid://dq4jxrubb120h" path="res://scenes/fishes/georgie.tscn" id="6_pbda8"]
+[ext_resource type="PackedScene" uid="uid://cv764lfm1ywdt" path="res://scenes/fishes/ron.tscn" id="6_penfv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtnij"]
 
@@ -50,6 +51,9 @@ position = Vector2(615, 336)
 
 [node name="Oddie" parent="Fish" instance=ExtResource("5_fef4g")]
 position = Vector2(831, 492)
+
+[node name="Ron" parent="Fish" instance=ExtResource("6_penfv")]
+position = Vector2(400, 227)
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -102,5 +106,3 @@ shape = SubResource("RectangleShape2D_apdu8")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="NavBoundaries/Bottom"]
 position = Vector2(640, 670)
 shape = SubResource("RectangleShape2D_galif")
-
-[editable path="Fish/Jeremy"]

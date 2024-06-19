@@ -32,8 +32,8 @@ func _ready():
 	animation_player.play(idle_anims_list[idle_anim])
 	idle_timer.start(randf_range(idle_min, idle_max))
 	
-	#mat.shader = shader
-	#sprite.material = mat
+	mat.shader = shader
+	sprite.material = mat
 
 
 func _physics_process(_delta):
@@ -47,14 +47,6 @@ func _integrate_forces(state):
 		lv = (get_global_mouse_position() - global_position) * 16
 	
 	state.set_linear_velocity(lv)
-	
-	
-
-func _on_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				is_held = true
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -64,17 +56,15 @@ func _input(event):
 
 func deform(direction, strength):
 	var tween = get_tree().create_tween()
-	
 	var deformationStrength = clamp((strength)/1000, 0.01, 0.5)
-	
 	var deformationDirection = direction
-	
 	var deformationScale = 0.5 * deformationDirection * deformationStrength
 	
-	tween.tween_property(sprite.material, "shader_parameter/deformation",
-		deformationScale, 0.15)
-	tween.tween_property(sprite.material, "shader_parameter/deformation",
-		Vector2.ZERO, 0.35)
+	tween.tween_method(set_shader_squash, Vector2.ZERO, deformationScale, 0.15)
+	tween.tween_method(set_shader_squash, deformationScale, Vector2.ZERO, 0.35)
+
+func set_shader_squash(deformation_scale):
+	mat.set_shader_parameter("deformation", deformation_scale)
 
 func move():
 	var direction = Vector2(randf_range(-0.7, 0.7), randf_range(-0.3, 0.3)).normalized()
@@ -103,8 +93,13 @@ func idle():
 	constant_force = Vector2.ZERO
 	idle_timer.start(randf_range(idle_min, idle_max))
 
-func set_shader_squash():
-	pass
+
+# SIGNALS
+func _on_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				is_held = true
 
 func _on_body_entered(_body):
 	var strength = abs(linear_velocity.length() - last_velocity.length())
@@ -112,10 +107,8 @@ func _on_body_entered(_body):
 
 	deform(direction, strength)
 
-
 func _on_idle_timer_timeout():
 	move()
-
 
 func _on_move_timer_timeout():
 	idle()

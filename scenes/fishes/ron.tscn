@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv764lfm1ywdt"]
+
+[ext_resource type="PackedScene" uid="uid://cytjmcme4xp84" path="res://scenes/fish.tscn" id="1_ov0p4"]
+[ext_resource type="Texture2D" uid="uid://diwap0x6qjyjc" path="res://assets/fishes/ron.png" id="2_2m38f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yo2k"]
+radius = 38.0
+height = 118.0
+
+[node name="Ron" instance=ExtResource("1_ov0p4")]
+idle_anim = 3
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_3yo2k")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_2m38f")
