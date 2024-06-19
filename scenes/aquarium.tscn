@@ -48,6 +48,7 @@ position = Vector2(983, 273)
 
 [node name="Georgie" parent="Fish" instance=ExtResource("6_pbda8")]
 position = Vector2(615, 336)
+speed = 20000
 
 [node name="Oddie" parent="Fish" instance=ExtResource("5_fef4g")]
 position = Vector2(831, 492)

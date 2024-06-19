@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-const MOVEMENT_SPEED:float = 10000
-
 var is_held = false
 
 enum MOTION_STATE {idle, moving, held}
@@ -27,6 +25,7 @@ var shader = preload("res://shaders/squash.gdshader")
 @export var move_min: float = 0.5
 @export var move_max: float = 4
 @export var idle_anim: IDLE_ANIMS
+@export var speed: int = 10000
 
 func _ready():
 	animation_player.play(idle_anims_list[idle_anim])
@@ -86,7 +85,7 @@ func move():
 	else:
 		sprite.flip_h = false
 	
-	add_constant_central_force(direction * MOVEMENT_SPEED)
+	add_constant_central_force(direction * speed)
 	move_timer.start(randf_range(move_min, move_max))
 
 func idle():
