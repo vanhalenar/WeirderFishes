@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://r55xue352txg"]
+
+[ext_resource type="Script" path="res://scripts/draw.gd" id="1_07x1y"]
+[ext_resource type="Texture2D" uid="uid://c0c8lrf38h3mg" path="res://assets/fishes/robert.png" id="2_sculr"]
+
+[node name="Draw" type="Node2D"]
+script = ExtResource("1_07x1y")
+
+[node name="Dummies" type="Node2D" parent="."]
+
+[node name="Dummy" type="Node2D" parent="Dummies"]
+position = Vector2(632, 396)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummies/Dummy"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_sculr")

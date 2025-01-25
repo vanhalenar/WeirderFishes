@@ -9,6 +9,7 @@ height = 118.0
 
 [node name="Ron" instance=ExtResource("1_ov0p4")]
 idle_anim = 3
+nature = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 5)

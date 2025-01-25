@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5nbumx8ayp1t"]
+[gd_scene load_steps=21 format=3 uid="uid://5nbumx8ayp1t"]
 
 [ext_resource type="Texture2D" uid="uid://7pkxwbpo50kb" path="res://assets/background.png" id="1_2cemv"]
 [ext_resource type="PackedScene" uid="uid://day5prl16b3i1" path="res://scenes/fishes/jeremy.tscn" id="4_1atpd"]
@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://sr5ksb7aqcmn" path="res://scenes/fishes/oddie.tscn" id="5_fef4g"]
 [ext_resource type="PackedScene" uid="uid://dq4jxrubb120h" path="res://scenes/fishes/georgie.tscn" id="6_pbda8"]
 [ext_resource type="PackedScene" uid="uid://cv764lfm1ywdt" path="res://scenes/fishes/ron.tscn" id="6_penfv"]
+[ext_resource type="PackedScene" uid="uid://gjr0pqlkx2lv" path="res://scenes/fishes/izma.tscn" id="7_ket2o"]
+[ext_resource type="PackedScene" uid="uid://rbxev344pxve" path="res://scenes/fishes/helena.tscn" id="8_v1gcn"]
+[ext_resource type="PackedScene" uid="uid://dhf4o7twkehws" path="res://scenes/fishes/jazz.tscn" id="9_iy7pv"]
+[ext_resource type="PackedScene" uid="uid://cc74h4rry1msf" path="res://scenes/fishes/yggdrasil.tscn" id="10_eagud"]
+[ext_resource type="PackedScene" uid="uid://dm3aadcice71i" path="res://scenes/fishes/roza.tscn" id="11_kqd6k"]
+[ext_resource type="PackedScene" uid="uid://cmwqgabpgj5li" path="res://scenes/fishes/robert.tscn" id="12_tjaqr"]
+[ext_resource type="Texture2D" uid="uid://fckqx6ngwujx" path="res://assets/UI/dropdownmenubutton.png" id="13_y8ocd"]
+[ext_resource type="Texture2D" uid="uid://olp2bt48l1ea" path="res://assets/UI/bookbutton.png" id="14_x0msx"]
+[ext_resource type="Texture2D" uid="uid://de1bu5pva3qyr" path="res://assets/UI/shopbutton.png" id="15_p7fvm"]
+[ext_resource type="Texture2D" uid="uid://bpmcsrit61rxo" path="res://assets/UI/minigamesbutton.png" id="16_sopj5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtnij"]
 
@@ -17,18 +27,6 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qyhq7"]
 normal = Vector2(-1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f771q"]
-size = Vector2(150, 720)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg2ss"]
-size = Vector2(150, 720)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_apdu8"]
-size = Vector2(1280, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_galif"]
-size = Vector2(1280, 100)
 
 [node name="Aquarium" type="Node2D"]
 
@@ -47,14 +45,31 @@ position = Vector2(253, 392)
 position = Vector2(983, 273)
 
 [node name="Georgie" parent="Fish" instance=ExtResource("6_pbda8")]
-position = Vector2(615, 336)
-speed = 20000
+position = Vector2(588, 341)
 
 [node name="Oddie" parent="Fish" instance=ExtResource("5_fef4g")]
 position = Vector2(831, 492)
 
 [node name="Ron" parent="Fish" instance=ExtResource("6_penfv")]
 position = Vector2(400, 227)
+
+[node name="Izma" parent="Fish" instance=ExtResource("7_ket2o")]
+position = Vector2(742, 177)
+
+[node name="Helena" parent="Fish" instance=ExtResource("8_v1gcn")]
+position = Vector2(469, 492)
+
+[node name="Jazz" parent="Fish" instance=ExtResource("9_iy7pv")]
+position = Vector2(1039, 495)
+
+[node name="Yggdrasil" parent="Fish" instance=ExtResource("10_eagud")]
+position = Vector2(160, 176)
+
+[node name="Roza" parent="Fish" instance=ExtResource("11_kqd6k")]
+position = Vector2(768, 370)
+
+[node name="Robert" parent="Fish" instance=ExtResource("12_tjaqr")]
+position = Vector2(1094, 152)
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -82,28 +97,42 @@ position = Vector2(1280, 360)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_qyhq7")
 
-[node name="NavBoundaries" type="Node2D" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+scale = Vector2(4, 4)
+mouse_filter = 1
 
-[node name="Left" type="Area2D" parent="NavBoundaries"]
+[node name="DropdownButton" type="TextureButton" parent="UI"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 30.0
+offset_bottom = 30.0
+texture_normal = ExtResource("13_y8ocd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavBoundaries/Left"]
-position = Vector2(75, 360)
-shape = SubResource("RectangleShape2D_f771q")
+[node name="LeftMenuContainer" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 5.0
+offset_top = 5.0
+theme_override_constants/separation = 6
 
-[node name="Right" type="Area2D" parent="NavBoundaries"]
+[node name="DropdownButton" type="TextureButton" parent="UI/LeftMenuContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("14_x0msx")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavBoundaries/Right"]
-position = Vector2(1205, 360)
-shape = SubResource("RectangleShape2D_mg2ss")
+[node name="DropdownButton2" type="TextureButton" parent="UI/LeftMenuContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("15_p7fvm")
 
-[node name="Top" type="Area2D" parent="NavBoundaries"]
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavBoundaries/Top"]
-position = Vector2(640, 50)
-shape = SubResource("RectangleShape2D_apdu8")
-
-[node name="Bottom" type="Area2D" parent="NavBoundaries"]
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavBoundaries/Bottom"]
-position = Vector2(640, 670)
-shape = SubResource("RectangleShape2D_galif")
+[node name="DropdownButton3" type="TextureButton" parent="UI/LeftMenuContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("16_sopj5")
